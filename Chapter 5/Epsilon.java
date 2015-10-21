@@ -13,7 +13,7 @@ public class Epsilon
     public static final double EPSILON = 1e-12;
     
     
-    public static void main( String[] arg)
+    public static void main( String[] args)
     {
         Scanner in = new Scanner( System.in );
         System.out.print("Enter a floating-point number: ");
