@@ -8,6 +8,10 @@ import java.util.Scanner;
  */
 public class Year
 {
+    public static boolean isLeapYear(int year)
+    {
+        return (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0));
+    }
     public static void main( String[] args)
     {
     
@@ -15,8 +19,7 @@ public class Year
         Scanner s = new Scanner(System.in);
         System.out.print("Enter in a year: ");
         int year = s.nextInt();
-        int num = year % 4;
-        if (num == 0)
+        if (Year.isLeapYear(year))
         {
             System.out.println("This year is a leap year. ");
         }

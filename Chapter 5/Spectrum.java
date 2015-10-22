@@ -12,23 +12,23 @@ public class Spectrum
         {
             System.out.println("This is a radio wave, and its frequency is < 3e9");
         } 
-        else if (1e-3 <= wavelength && wavelength <= 1e-1)
+        else if (1e-3 <= wavelength)
         {
             System.out.println("This is a microwave, and its frequency is from 3e9 to 3e11");
         }
-        else if (7e-7 <= wavelength && wavelength < 1e-3)
+        else if (7e-7 <= wavelength)
         {
             System.out.println("This is an Infared wave and its frequency is from 3e11 to 4e14");
         }
-        else if (4e-7 <= wavelength && wavelength < 7e-7)
+        else if (4e-7 <= wavelength)
         {
             System.out.println("This is a visible light wave and its frequency is from 4e14 to 3e16");
         }
-        else if (1e-8 <= wavelength && wavelength < 1e-7)
+        else if (1e-8 <= wavelength)
         {
             System.out.println("This is an ultraviolet wave and its frequency is from 7.5e14 to 3e16");
         }
-        else if (1e-11 <= wavelength && wavelength < 1e-8)
+        else if (1e-11 <= wavelength)
         {
             System.out.println("This is an x-ray wave and its frequency is from 3e16 to 3e19");
         }
