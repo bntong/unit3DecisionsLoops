@@ -19,4 +19,22 @@ public class FindMaxAndMin
         
         return largest;
     }
+    
+    public static double findMin()
+    {
+        Scanner scan = new Scanner (System.in);
+        System.out.println("Enter a series of number or any character quit: ");
+        
+        double smallest = scan.nextDouble();
+        while( scan.hasNextDouble())
+        {
+            double input = scan.nextDouble();
+            if( input < smallest)
+            {
+                smallest = input;
+            }
+        }
+        
+        return smallest;
+    }
 }
