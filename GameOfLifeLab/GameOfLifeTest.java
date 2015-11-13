@@ -1,4 +1,3 @@
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -89,7 +88,7 @@ public class GameOfLifeTest
                 }
                 else // else, the cell should be dead; assert that the actor is null
                 {
-                    assertNull("expected dead cell at (" + row + ", " + col + ")", cell);
+                    assertNull("expected dead cell at (" + row + ", " + col + ")", cell); 
                 }
             }
         }

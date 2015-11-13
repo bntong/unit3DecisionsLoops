@@ -147,22 +147,33 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // insert magic here...
-        
+//         for (int i = 0; i < row; i++)
+//         {
+//             for (int i = 0; i < col; i++)
+//             {
+//                if (grid.getOccupiedAdjacentLocations(null))
+//                {
+//                }
+// 
+//             }
+//         }
+//         
+//         
     }
     
     /**
-     * Returns the actor at the specified row and column. Intended to be used for unit testing.
+     * Returns the rock at the specified row and column. Intended to be used for unit testing.
      *
      * @param   row the row (zero-based index) of the actor to return
      * @param   col the column (zero-based index) of the actor to return
      * @pre     the grid has been created
      * @return  the actor at the specified row and column
      */
-    public Actor getActor(int row, int col)
+    public Rock getRock(int row, int col)
     {
         Location loc = new Location(row, col);
-        Actor actor = world.getGrid().get(loc);
-        return actor;
+        Rock rock = (Rock) world.getGrid().get(loc);
+        return rock;
     }
 
     /**
@@ -184,8 +195,7 @@ public class GameOfLife
     {
         return COLS;
     }
-    
-    
+   
     /**
      * Creates an instance of this class. Provides convenient execution.
      *
