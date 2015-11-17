@@ -4,6 +4,7 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
+import java.util.ArrayList;
 
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
@@ -18,8 +19,8 @@ public class GameOfLife
     private ActorWorld world;
     
     // the game board will have 5 rows and 5 columns
-    private final int ROWS = 10;
-    private final int COLS = 15;
+    private final int ROWS = 15;
+    private final int COLS = 20;
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -53,20 +54,20 @@ public class GameOfLife
     private void populateGame()
     {
         // constants for the location of the fourteen cells initially alive
-        final int X1 = 1, Y1 = 2;
-        final int X2 = 2, Y2 = 2;
-        final int X3 = 3, Y3 = 2;
-        final int X4 = 4, Y4 = 2;
-        final int X5 = 5, Y5 = 2;
-        final int X6 = 6, Y6 = 2;
-        final int X7 = 7, Y7 = 2;
-        final int X8 = 8, Y8 = 2;
-        final int X9 = 9, Y9 = 2;
-        final int X10 = 10, Y10 = 2;
-        final int X11 = 2, Y11 = 1;
-        final int X12 = 9, Y12 = 1;
-        final int X13 = 2, Y13 = 3;
-        final int X14 = 9, Y14 = 3;
+        final int X1 = 5, Y1 = 7;
+        final int X2 = 6, Y2 = 7;
+        final int X3 = 7, Y3 = 7;
+        final int X4 = 8, Y4 = 7;
+        final int X5 = 9, Y5 = 7;
+        final int X6 = 10, Y6 = 7;
+        final int X7 = 11, Y7 = 7;
+        final int X8 = 12, Y8 = 7;
+        final int X9 = 13, Y9 = 7;
+        final int X10 = 14, Y10 = 7;
+        final int X11 = 6, Y11 = 6;
+        final int X12 = 6, Y12 = 8;
+        final int X13 = 13, Y13 = 6;
+        final int X14 = 13, Y14 = 8;
         // the grid of Actors that maintains the state of the game
         //  (alive cells contains actors; dead cells do not)
         Grid<Actor> grid = world.getGrid();
@@ -146,19 +147,46 @@ public class GameOfLife
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
         
+        ArrayList<Location>alive = new ArrayList<Location>();
+        ArrayList<Location>dead = new ArrayList<Location>();
+        ArrayList<Actor>neighbors = new ArrayList<Actor>();
+      
         // insert magic here...
-//         for (int i = 0; i < row; i++)
-//         {
-//             for (int i = 0; i < col; i++)
-//             {
-//                if (grid.getOccupiedAdjacentLocations(null))
-//                {
-//                }
-// 
-//             }
-//         }
-//         
-//         
+        
+        for (int r = 0; r < ROWS; r++)
+        {
+            for (int c = 0; c < COLS; c++)
+            {
+               Location loc = new Location(r , c);
+               Actor cell = grid.get(loc);
+               neighbors = grid.getNeighbors(loc);
+               if (cell == null && neighbors.size() == 3)
+               {
+                   alive.add(loc);                   
+               }
+               else if (cell != null)
+               {
+                   if (neighbors.size() == 2 || neighbors.size() == 3)
+                   {
+                       alive.add(loc);
+                   }
+                   else
+                   {
+                       dead.add(loc);
+                   }
+               }
+
+            }
+        }
+        for (Location newloc : alive)
+        {
+            Rock rock = new Rock();
+            grid.put(newloc , rock);
+        }
+        for (Location newloc : dead)
+        {
+            grid.remove(newloc);
+        }
     }
     
     /**
@@ -200,9 +228,14 @@ public class GameOfLife
      * Creates an instance of this class. Provides convenient execution.
      *
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         GameOfLife game = new GameOfLife();
+        for(int i = 0; i < 20; i++)
+        {
+            Thread.sleep(1000);
+            game.createNextGeneration();
+        }
     }
 
 }
